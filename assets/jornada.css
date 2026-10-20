@@ -1,0 +1,184 @@
+/* Jornada "Como funciona" adaptada de "Embarq Jornada v3".
+   A jornada avança pela rolagem: o quadro fica fixo (sticky) enquanto a
+   seção passa; as etapas são clicáveis e levam à posição correspondente. */
+
+
+.jn-secao { padding-top: clamp(24px, 4vw, 56px); scroll-margin-top: 68px; }
+.jn-cab { max-width: 640px; }
+.jn-trilho { position: relative; } /* altura definida pelo script */
+.jn-fixo {
+  position: sticky; top: 0; min-height: 100vh; box-sizing: border-box;
+  padding: 84px 0 20px; display: flex; flex-direction: column; justify-content: center; gap: 20px;
+}
+
+/* Etapas */
+.jn-tabs { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.jn-track, .jn-fill { position: absolute; left: 10%; top: 19px; height: 2px; }
+.jn-track { right: 10%; background: var(--line-strong); }
+.jn-fill { width: 0; background: var(--ink-900); }
+.jn-tab {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px;
+  padding: 0 4px; border: 0; background: none; cursor: pointer; color: var(--ink-400); font: inherit;
+}
+.jn-tab:focus-visible { outline: 2px solid var(--ink-900); outline-offset: 2px; }
+.jn-dot {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  background: #fff; color: var(--ink-400); border: 2px solid var(--line-strong);
+  transition: all 0.3s ease;
+}
+.jn-lbl { font-size: 13px; line-height: 1.25; text-align: center; font-weight: 500; text-wrap: balance; }
+.jn-tab.feito .jn-dot { background: var(--ink-900); color: #fff; border-color: var(--ink-900); }
+.jn-tab.feito, .jn-tab.ativo { color: var(--ink-900); }
+.jn-tab.ativo .jn-dot { background: var(--neon); color: var(--ink-900); border-color: var(--ink-900); box-shadow: 0 0 0 5px var(--neon-glow); }
+.jn-tab.ativo .jn-lbl { font-weight: 600; }
+@media (max-width: 559px) { .jn-lbl { display: none; } .jn-dot { width: 34px; height: 34px; font-size: 12px; } .jn-track, .jn-fill { top: 16px; } }
+
+/* Painel */
+.jn-panel { background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-lg); }
+.jn-bar { height: 3px; background: var(--bg-0); }
+.jn-bar i { display: block; height: 100%; width: 0; background: var(--neon); }
+.jn-conteudo { display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; align-items: center; transition: opacity 0.35s ease, transform 0.35s ease; }
+.jn-conteudo.saindo { opacity: 0; transform: translateY(8px); }
+.jn-txt { flex: 1 1 260px; max-width: 400px; display: flex; flex-direction: column; gap: 14px; }
+.jn-num { font-family: var(--font-mono); font-size: 44px; font-weight: 500; line-height: 1; letter-spacing: -0.04em; color: var(--ink-900); }
+.jn-title { margin: 0; font-size: 26px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-900); text-wrap: balance; }
+.jn-body { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-700); text-wrap: pretty; }
+.jn-dica { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--ink-400); transition: opacity 0.3s; }
+.jn-seta { display: inline-block; animation: jn-bob 1.6s ease-in-out infinite; }
+@keyframes jn-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+.jn-stage {
+  flex: 1.4 1 360px; min-width: 0; min-height: 268px; box-sizing: border-box;
+  padding: 18px; border-radius: 16px; background: var(--bg-0);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.jn-foot { margin: 0; text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--ink-400); }
+
+@media (max-width: 767px) {
+  .jn-fixo { padding-top: 76px; gap: 14px; }
+  .jn-conteudo { padding: 16px; gap: 14px; }
+  .jn-txt { gap: 8px; max-width: none; }
+  .jn-num { font-size: 28px; }
+  .jn-title { font-size: 20px; }
+  .jn-body { font-size: 14px; min-height: 4.5em; }
+  .jn-dica { display: none; }
+  .jn-stage { flex-basis: 100%; min-height: 290px; padding: 10px; }
+}
+
+/* Atalhos topo / pular — visíveis só com a jornada travada na tela */
+.jn-atalhos {
+  position: fixed; right: clamp(12px, 3vw, 28px); bottom: clamp(16px, 4vh, 32px); z-index: 30;
+  display: flex; flex-direction: column; gap: 8px;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
+.jn-atalhos.visivel { opacity: 1; visibility: visible; transform: none; transition: opacity 0.25s ease, transform 0.25s ease; }
+.jn-atalho {
+  display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px 0 13px;
+  border-radius: var(--r-pill); border: 1px solid var(--line-strong);
+  background: var(--glass-strong); -webkit-backdrop-filter: var(--blur-lg); backdrop-filter: var(--blur-lg);
+  box-shadow: var(--shadow-md); color: var(--ink-900); text-decoration: none; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.jn-atalho:hover { border-color: var(--ink-900); }
+.jn-atalho[data-ir="pular"] { background: var(--ink-900); border-color: var(--ink-900); color: #fff; }
+.jn-atalho[data-ir="pular"]:hover { color: var(--neon); }
+.jn-atalho:focus-visible { outline: 2px solid var(--ink-900); outline-offset: 2px; }
+@media (max-width: 559px) {
+  .jn-atalho { width: 44px; padding: 0; justify-content: center; }
+  .jn-atalho-t { display: none; }
+}
+
+/* Peças comuns das cenas */
+.jn-mono { font-family: var(--font-mono); }
+.jn-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; width: 100%; max-width: 420px; margin: 0 auto; box-sizing: border-box; }
+.jn-card-h { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.jn-card-h .jn-mono { font-size: 11px; font-weight: 400; color: var(--ink-500); }
+
+/* Cena 1 — solicitação */
+.jn-field { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; border-top: 1px solid var(--bg-0); padding: 9px 0; opacity: 0.25; transition: opacity 0.3s; }
+.jn-field span:first-child { color: var(--ink-500); }
+.jn-field span:last-child { text-align: right; font-weight: 500; }
+.jn-field.on { opacity: 1; }
+.jn-status { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 10px 12px; border-radius: 10px; background: var(--bg-0); font-size: 13px; font-weight: 600; transition: background 0.3s; }
+.jn-status.ok { background: var(--neon); }
+
+/* Cena 2 — direcionamento */
+.jn-route { display: flex; align-items: center; width: 100%; max-width: 440px; margin: 0 auto; }
+.jn-origin { flex: none; max-width: 118px; background: var(--ink-900); color: #fff; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 4px; }
+.jn-origin .jn-mono { font-size: 11px; color: var(--neon); }
+.jn-origin b { font-size: 13px; line-height: 1.3; font-weight: 600; }
+.jn-dests { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.jn-dest { display: flex; align-items: center; opacity: 0.2; transition: opacity 0.3s; }
+.jn-dest.on { opacity: 1; }
+.jn-dest.nok.on { opacity: 0.4; }
+.jn-line { flex: 1; min-width: 16px; height: 2px; margin: 0 8px; background-image: linear-gradient(90deg, var(--ink-900) 0 10px, transparent 10px 20px); background-size: 20px 2px; }
+.jn-dest.nok .jn-line { background-image: linear-gradient(90deg, var(--ink-300) 0 4px, transparent 4px 8px); background-size: 8px 2px; }
+.jn-dest.on:not(.nok) .jn-line { animation: jn-fluxo 0.8s linear infinite; }
+@keyframes jn-fluxo { from { background-position: 0 0; } to { background-position: 20px 0; } }
+.jn-dcard { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 12px; background: #fff; border: 1px solid var(--line); transition: border-color 0.3s; }
+.jn-dest.on:not(.nok) .jn-dcard { border-color: var(--ink-900); }
+.jn-id { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; font-family: var(--font-mono); font-size: 12px; font-weight: 600; background: var(--neon); }
+.jn-dest.nok .jn-id { background: var(--bg-0); }
+.jn-dcard b { display: block; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.jn-dcard small { display: block; font-size: 11px; color: var(--ink-500); white-space: nowrap; }
+
+/* Cena 3 — propostas confidenciais */
+.jn-envs { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.jn-envgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 440px; }
+.jn-env { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; opacity: 0; transform: translateY(12px); transition: all 0.4s ease; }
+.jn-env.on { opacity: 1; transform: none; }
+.jn-env b { font-size: 12px; font-weight: 600; }
+.jn-env .jn-mono { font-size: 15px; font-weight: 600; }
+.jn-env small { font-size: 11px; color: var(--ink-500); }
+.jn-tag { align-self: flex-start; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px; background: var(--ink-900); color: var(--neon); }
+.jn-seal { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-radius: var(--r-pill); background: #fff; border: 1px solid var(--line); font-size: 12.5px; text-align: left; opacity: 0; transition: opacity 0.4s; }
+.jn-seal.on { opacity: 1; }
+.jn-seal i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 0 3px var(--neon-glow); }
+
+/* Cena 4 — comparação e aceite */
+.jn-cmp { display: flex; flex-direction: column; gap: 12px; }
+.jn-views { display: flex; gap: 4px; padding: 4px; background: #fff; border: 1px solid var(--line); border-radius: 12px; align-self: flex-start; }
+.jn-views span { border-radius: 9px; padding: 7px 11px; font-size: 12.5px; white-space: nowrap; color: var(--ink-500); font-weight: 500; transition: all 0.3s; }
+.jn-views span.on { background: var(--ink-900); color: #fff; font-weight: 600; }
+.jn-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.jn-oferta { border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px; background: #fff; border: 2px solid var(--line); transition: all 0.3s ease; min-width: 0; }
+.jn-oferta b { font-size: 12px; font-weight: 600; line-height: 1.25; }
+.jn-oferta .jn-mono { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+.jn-oferta small { font-size: 11.5px; color: var(--ink-700); }
+.jn-oferta.sel { border-color: var(--ink-900); }
+.jn-oferta.ganhou { background: var(--neon); }
+.jn-oferta.apagada { opacity: 0.45; }
+.jn-oferta.lacrada { background: var(--bg-0); }
+.jn-oferta.lacrada b, .jn-oferta.lacrada small { color: var(--ink-400); }
+.jn-oferta.lacrada .jn-mono { color: var(--ink-300); letter-spacing: 0.08em; }
+.jn-cmp-f { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; min-height: 34px; }
+.jn-msg { flex: 1 1 180px; font-size: 12.5px; line-height: 1.4; color: var(--ink-700); }
+.jn-os { display: flex; align-items: center; height: 32px; padding: 0 12px; border-radius: var(--r-pill); font-size: 12.5px; font-weight: 600; white-space: nowrap; background: var(--neon); color: var(--ink-900); opacity: 0; transition: opacity 0.3s; }
+.jn-os.on { opacity: 1; }
+
+/* Cena 5 — encerramento */
+.jn-check { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid var(--bg-0); font-size: 13px; font-weight: 500; opacity: 0.35; transition: opacity 0.3s; }
+.jn-check i { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 12px; font-weight: 700; border: 1.5px solid var(--ink-300); transition: all 0.3s; }
+.jn-check.on { opacity: 1; }
+.jn-check.on i { background: var(--neon); border-color: var(--ink-900); }
+.jn-end { margin-top: 8px; padding: 11px; border-radius: 10px; text-align: center; font-size: 14px; font-weight: 600; background: var(--bg-0); color: var(--ink-400); transition: all 0.3s; }
+.jn-end.on { background: var(--ink-900); color: var(--neon); }
+
+/* Telas estreitas */
+.jn-curto { display: none; }
+@media (max-width: 479px) {
+  .jn-longo { display: none; }
+  .jn-curto { display: inline; }
+  .jn-origin { max-width: 92px; padding: 10px; }
+  .jn-dcard { padding: 6px 8px; gap: 8px; }
+  .jn-dcard b { font-size: 11.5px; }
+  .jn-env, .jn-oferta { padding: 9px; }
+  .jn-env .jn-mono { font-size: 13px; }
+  .jn-oferta .jn-mono { font-size: 13.5px; }
+  .jn-views span { padding: 6px 8px; font-size: 11.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jn-secao *, .jn-secao *::before, .jn-secao *::after { animation: none !important; transition: none !important; }
+}

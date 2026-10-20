@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pesquisa — Embarq.cargo</title>
+    <meta
+      name="description"
+      content="5 perguntas rápidas sobre como o frete é cotado e contratado hoje. Sem cadastro, responde em três minutos."
+    />
+    <link rel="canonical" href="https://embarqcargo.com.br/pesquisa/" />
+    <!-- `noindex` de propósito: a pesquisa é um momento, não uma página de
+         produto. Indexá-la poria um questionário na frente de quem procura a
+         Embarq. `follow` porque os links daqui para a landing continuam valendo,
+         e as tags og seguem funcionando — quem compartilha no WhatsApp vê o
+         cartão, que é como esta página realmente circula. -->
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#0F1115" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Embarq Cargo" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://embarqcargo.com.br/pesquisa/" />
+    <meta property="og:title" content="Pesquisa — Embarq.cargo" />
+    <meta
+      property="og:description"
+      content="5 perguntas sobre como o frete é cotado e contratado hoje. Sem cadastro, três minutos."
+    />
+    <meta property="og:image" content="https://embarqcargo.com.br/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pesquisa — Embarq.cargo" />
+    <meta
+      name="twitter:description"
+      content="5 perguntas sobre como o frete é cotado e contratado hoje. Sem cadastro, três minutos."
+    />
+    <meta name="twitter:image" content="https://embarqcargo.com.br/og-image.png" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <script type="module" crossorigin src="/assets/pesquisa-C1ynrrqN.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/index-CfhsuWbz.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-B1-DxNjW.css">
+  </head>
+
+  <body>
+    <div class="fundo" aria-hidden="true"></div>
+
+    <div class="conteudo flex min-h-dvh flex-col">
+      <header class="border-b border-line">
+        <div class="container-embarq flex h-[68px] items-center justify-between gap-4">
+          <a href="/" class="flex items-center gap-2.5 text-ink no-underline" aria-label="Embarq.cargo, página inicial">
+            <svg width="28" height="28" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+              <rect width="200" height="200" rx="52" fill="#0F1115" />
+              <g transform="translate(100 100) skewX(-12) translate(-100 -100)">
+                <rect x="52" y="47" width="76" height="30" rx="2" fill="#8B909A" />
+                <rect x="52" y="85" width="58" height="30" rx="2" fill="#F3F4F1" />
+                <rect x="52" y="123" width="76" height="30" rx="2" fill="#B8FF3A" />
+              </g>
+            </svg>
+            <span class="text-[19px] tracking-[-0.02em]"
+              ><span class="font-semibold">Embarq</span><span class="font-normal" style="color: #8b909a">.cargo</span></span
+            >
+          </a>
+          <span class="rotulo">Pesquisa</span>
+        </div>
+      </header>
+
+      <main class="container-embarq flex w-full max-w-[680px] flex-1 flex-col py-8 sm:py-12">
+        <!-- A barra existe no markup entregue, mesmo antes do JavaScript: sem
+             ela a tela pularia de altura no primeiro render. Fica escondida até
+             a primeira pergunta aparecer. -->
+        <div data-progresso hidden class="mb-8">
+          <div
+            class="progresso-trilho"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="3"
+            aria-valuenow="0"
+            aria-label="Progresso da pesquisa"
+            data-trilho
+          >
+            <span class="progresso-barra" style="width: 0%" data-barra></span>
+          </div>
+          <p class="mt-2.5 text-[13px] text-ink-400" data-contador></p>
+        </div>
+
+        <!-- Onde cada tela é montada. `aria-live="polite"` porque a troca de
+             pergunta não move a página: sem isto, quem usa leitor de tela
+             continuaria ouvindo a pergunta anterior. -->
+        <div data-palco aria-live="polite" class="flex-1">
+          <noscript>
+            <h1 class="text-secao">Esta pesquisa precisa de JavaScript</h1>
+            <p class="mt-4 text-lead text-ink-700">
+              Ative o JavaScript para responder, ou escreva para
+              <a href="mailto:contato@embarqcargo.com.br" class="text-ink underline"
+                >contato@embarqcargo.com.br</a
+              >.
+            </p>
+          </noscript>
+        </div>
+      </main>
+
+      <footer class="border-t border-line">
+        <div class="container-embarq flex flex-wrap items-center justify-between gap-3 py-6">
+          <span class="text-[15px] tracking-[-0.02em]"
+            ><span class="font-semibold">Embarq</span><span class="font-normal" style="color: #8b909a">.cargo</span></span
+          >
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
