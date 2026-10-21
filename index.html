@@ -60,6 +60,8 @@
     <link rel="modulepreload" crossorigin href="/assets/index-CfhsuWbz.js">
     <link rel="stylesheet" crossorigin href="/assets/index-B1-DxNjW.css">
     <link rel="stylesheet" href="/assets/jornada.css">
+    <link rel="stylesheet" href="/assets/v2.css">
+    <script defer src="/assets/v2.js"></script>
     <script defer src="/assets/jornada.js"></script>
   </head>
 
@@ -97,8 +99,11 @@
             <a href="#diferenciais" class="text-[14px] text-ink-700 no-underline transition-colors hover:text-ink"
               >Diferenciais</a
             >
-            <a href="#para-quem" class="text-[14px] text-ink-700 no-underline transition-colors hover:text-ink"
-              >Para quem</a
+            <a href="#planos" class="text-[14px] text-ink-700 no-underline transition-colors hover:text-ink"
+              >Planos</a
+            >
+            <a href="/saiba-mais/" class="text-[14px] text-ink-700 no-underline transition-colors hover:text-ink"
+              >Saiba mais</a
             >
             <a href="/pesquisa/" class="text-[14px] text-ink-700 no-underline transition-colors hover:text-ink"
               >Pesquisa</a
@@ -125,7 +130,8 @@
           <nav class="container-embarq flex flex-col gap-1 py-4" aria-label="Seções da página">
             <a href="#como-funciona" class="rounded-sm px-2 py-3 text-ink-700 no-underline">Como funciona</a>
             <a href="#diferenciais" class="rounded-sm px-2 py-3 text-ink-700 no-underline">Diferenciais</a>
-            <a href="#para-quem" class="rounded-sm px-2 py-3 text-ink-700 no-underline">Para quem</a>
+            <a href="#planos" class="rounded-sm px-2 py-3 text-ink-700 no-underline">Planos</a>
+            <a href="/saiba-mais/" class="rounded-sm px-2 py-3 text-ink-700 no-underline">Saiba mais</a>
             <a href="/pesquisa/" class="rounded-sm px-2 py-3 text-ink-700 no-underline">Pesquisa</a>
           </nav>
         </div>
@@ -133,7 +139,15 @@
 
       <main id="conteudo" tabindex="-1">
         <!-- ── Hero ─────────────────────────────────────────────── -->
-        <section class="secao pt-[132px] md:pt-[164px]">
+        <section class="secao v2-hero pt-[132px] md:pt-[164px]">
+          <!-- Marca d'água: o "E" do símbolo Embarq (as três barras inclinadas da logo). -->
+          <svg class="v2-marca-dagua" viewBox="40 40 120 120" aria-hidden="true" focusable="false">
+            <g transform="translate(100 100) skewX(-12) translate(-100 -100)">
+              <rect x="52" y="47" width="76" height="30" rx="2" fill="#8B909A" />
+              <rect x="52" y="85" width="58" height="30" rx="2" fill="#0F1115" />
+              <rect x="52" y="123" width="76" height="30" rx="2" fill="#B8FF3A" />
+            </g>
+          </svg>
           <div class="container-embarq grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
             <div>
               <p class="selo surgir">
@@ -148,31 +162,20 @@
                 Sua cotação de frete em sigilo, comparada lado a lado.
               </h1>
 
-              <p class="mt-7 max-w-[54ch] text-lead text-ink-700">
-                A Embarq é um marketplace B2B que conecta empresas a transportadoras pré-curadas. Cada
-                transportadora envia a própria proposta sem ver a das concorrentes — e o solicitante recebe todas
-                ao mesmo tempo, no mesmo formato.
+              <p class="mt-6 max-w-[40ch] text-lead text-ink-700">
+                Todas as propostas no mesmo formato. Nenhuma transportadora vê a outra.
               </p>
 
-              <div class="mt-9 flex flex-wrap items-center gap-3">
-                <a href="/pesquisa/" class="btn btn-primario">Quero participar do piloto</a>
+              <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a href="/pesquisa/" class="btn btn-primario">Entrar no piloto</a>
                 <a href="#como-funciona" class="btn btn-secundario">Ver como funciona</a>
               </div>
 
-              <dl class="mt-12 grid max-w-[520px] grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:grid-cols-3">
-                <div>
-                  <dt class="rotulo">Frete</dt>
-                  <dd class="mt-2 ml-0 text-[14px] text-ink-700">Entre empresas</dd>
-                </div>
-                <div>
-                  <dt class="rotulo">Oferta</dt>
-                  <dd class="mt-2 ml-0 text-[14px] text-ink-700">Transportadoras homologadas</dd>
-                </div>
-                <div>
-                  <dt class="rotulo">Disputa</dt>
-                  <dd class="mt-2 ml-0 text-[14px] text-ink-700">Sigilosa entre concorrentes</dd>
-                </div>
-              </dl>
+              <ul class="v2-numeros">
+                <li><b data-de="99">0</b><span>concorrentes veem seu preço</span></li>
+                <li><b data-de="20">1</b><span>formato para comparar</span></li>
+                <li><b data-de="40">5</b><span>etapas, do pedido ao fim</span></li>
+              </ul>
             </div>
 
             <!-- Quadro ilustrativo: propostas lacradas e uma revelada.
@@ -290,198 +293,240 @@
           </div>
         </section>
 
-        <!-- ── O que é / o problema ─────────────────────────────── -->
-        <section id="o-que-e" class="secao" aria-labelledby="t-o-que-e" tabindex="-1">
+        <!-- ── Pessoas dos dois lados ───────────────────────────────
+             Fotos: Pexels e Unsplash (licenças gratuitas, uso comercial sem atribuição).
+             Carregadas direto dos CDNs; para produção, baixar e
+             servir localmente. -->
+        <section id="pessoas" class="secao v2-secao" aria-labelledby="t-pessoas" tabindex="-1">
           <div class="container-embarq">
-            <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-              <div>
-                <p class="rotulo">O problema</p>
-                <h2 id="t-o-que-e" class="mt-6 text-secao text-ink">
-                  A cotação de frete ainda mora na caixa de entrada.
-                </h2>
+            <div class="v2-cab v2-cab-centro">
+              <p class="rotulo">Quem está do outro lado</p>
+              <h2 id="t-pessoas" class="mt-5 text-secao text-ink">Pessoas de verdade. A Embarq faz a ponte.</h2>
+            </div>
+
+            <div class="v2-ponte">
+              <figure class="v2-pessoa">
+                <img
+                  src="https://images.pexels.com/photos/20955046/pexels-photo-20955046.jpeg?auto=compress&cs=tinysrgb&w=900"
+                  alt="Homem de óculos sorrindo, trabalhando no notebook no escritório"
+                  loading="lazy" width="900" height="600"
+                />
+                <span class="v2-chip v2-chip-quem">Você · contrata o frete</span>
+                <span class="v2-chip v2-chip-ui"><b>3 propostas</b> recebidas</span>
+              </figure>
+
+              <div class="v2-elo" aria-hidden="true">
+                <span class="v2-elo-linha"></span>
+                <span class="v2-elo-marca">
+                  <svg width="34" height="34" viewBox="0 0 200 200"><rect width="200" height="200" rx="52" fill="#0F1115" /><g transform="translate(100 100) skewX(-12) translate(-100 -100)"><rect x="52" y="47" width="76" height="30" rx="2" fill="#8B909A" /><rect x="52" y="85" width="58" height="30" rx="2" fill="#F3F4F1" /><rect x="52" y="123" width="76" height="30" rx="2" fill="#B8FF3A" /></g></svg>
+                </span>
+                <span class="v2-elo-linha"></span>
               </div>
 
-              <div class="max-w-[62ch]">
-                <p class="text-lead text-ink-700">
-                  O comprador pede preço por e-mail e WhatsApp, cada transportadora responde em um formato
-                  diferente e a comparação é remontada à mão a cada embarque. O que ficou combinado fica com
-                  quem negociou.
-                </p>
-                <p class="mt-6 text-corpo text-ink-700">
-                  A Embarq coloca esse processo dentro de uma plataforma: solicitação estruturada, direcionamento
-                  para transportadoras homologadas, propostas sigilosas, aceite que gera a Ordem de Serviço e o
-                  registro do que aconteceu depois dela. O piloto começa por Manaus.
-                </p>
+              <figure class="v2-pessoa">
+                <img
+                  src="https://images.unsplash.com/photo-1762095996527-126e49ef9d72?w=900&q=70&auto=format&fit=crop"
+                  alt="Motorista na cabine de uma van, fazendo sinal de positivo"
+                  loading="lazy" width="900" height="600"
+                />
+                <span class="v2-chip v2-chip-quem">Transportadora homologada</span>
+                <span class="v2-chip v2-chip-ui"><b>Nova solicitação</b> Manaus → Itacoatiara</span>
+              </figure>
+            </div>
 
-                <h3 class="mt-12 text-rotulo uppercase text-ink-500">Três papéis na plataforma</h3>
-                <ul class="mt-5 grid list-none gap-3 p-0 sm:grid-cols-3">
-                  <li class="vidro cartao rounded-md p-5">
-                    <p class="text-[15px] font-semibold text-ink">Solicitante</p>
-                    <p class="mt-1.5 text-[13.5px] text-ink-500">A empresa que pede o frete.</p>
-                  </li>
-                  <li class="vidro cartao rounded-md p-5">
-                    <p class="text-[15px] font-semibold text-ink">Transportadora</p>
-                    <p class="mt-1.5 text-[13.5px] text-ink-500">A frota homologada que cota.</p>
-                  </li>
-                  <li class="vidro cartao rounded-md p-5">
-                    <p class="text-[15px] font-semibold text-ink">Time Embarq</p>
-                    <p class="mt-1.5 text-[13.5px] text-ink-500">Curadoria e acompanhamento.</p>
-                  </li>
+            <ul class="v2-papel-embarq">
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="3" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg> Sigilo entre concorrentes</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Curadoria das transportadoras</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="3" /><path d="M7.5 9h9M7.5 13h9M7.5 17h5" /></svg> Tudo registrado</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ── Antes x depois (substitui "O problema") ───────────── -->
+        <section id="o-que-e" class="secao v2-secao" aria-labelledby="t-o-que-e" tabindex="-1">
+          <div class="container-embarq">
+            <div class="v2-cab v2-cab-centro">
+              <p class="rotulo">O problema</p>
+              <h2 id="t-o-que-e" class="mt-5 text-secao text-ink">Da caixa de entrada para um só painel.</h2>
+            </div>
+
+            <div class="v2-antes-depois">
+              <div class="v2-lado v2-antes">
+                <p class="v2-tag v2-tag-ruim">Hoje</p>
+                <div class="v2-caos" aria-hidden="true">
+                  <span class="v2-bolha" style="--r:-6deg;--x:4%;--y:6%"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg> Re: Re: cotação frete?</span>
+                  <span class="v2-bolha v2-zap" style="--r:4deg;--x:38%;--y:22%"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" /></svg> "manda o valor aí"</span>
+                  <span class="v2-bolha" style="--r:-3deg;--x:8%;--y:42%"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 12-8.5 8.5a5 5 0 0 1-7-7L14 5a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 8" /></svg> proposta_v3_final.pdf</span>
+                  <span class="v2-bolha v2-zap" style="--r:7deg;--x:46%;--y:58%"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" /></svg> "esse preço é com seguro?"</span>
+                  <span class="v2-bolha" style="--r:-8deg;--x:12%;--y:74%"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M4 9h16M4 15h16M10 3v18" /></svg> planilha_comparativo.xlsx</span>
+                </div>
+                <ul class="v2-dores">
+                  <li>Formatos diferentes</li>
+                  <li>Comparação manual</li>
+                  <li>Histórico perdido</li>
+                </ul>
+              </div>
+
+              <div class="v2-seta" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </div>
+
+              <div class="v2-lado v2-depois">
+                <p class="v2-tag v2-tag-bom">Com a Embarq</p>
+                <div class="v2-tabela" aria-hidden="true">
+                  <div class="v2-tl v2-th"><span>Transportadora</span><span>Preço</span><span>Prazo</span><span>Nota</span></div>
+                  <div class="v2-tl"><span>Transp. A</span><span>R$ 5.480</span><span>1 dia</span><span>★ 4,9</span></div>
+                  <div class="v2-tl v2-tl-melhor"><span>Transp. B</span><span>R$ 4.920</span><span>2 dias</span><span>★ 4,6</span></div>
+                  <div class="v2-tl"><span>Transp. C</span><span>R$ 5.150</span><span>1 dia</span><span>★ 4,7</span></div>
+                </div>
+                <ul class="v2-ganhos">
+                  <li>Mesmo formato</li>
+                  <li>Lado a lado</li>
+                  <li>Tudo registrado</li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- ── Diferenciais ─────────────────────────────────────── -->
-        <section id="diferenciais" class="secao" aria-labelledby="t-diferenciais" tabindex="-1">
+        <!-- ── Diferenciais (bento) ─────────────────────────────── -->
+        <section id="diferenciais" class="secao v2-secao" aria-labelledby="t-diferenciais" tabindex="-1">
           <div class="container-embarq">
-            <div class="max-w-[46ch]">
+            <div class="v2-cab">
               <p class="rotulo">Diferenciais</p>
-              <h2 id="t-diferenciais" class="mt-6 text-secao text-ink">O que a plataforma muda no processo.</h2>
+              <h2 id="t-diferenciais" class="mt-5 text-secao text-ink">O que muda no seu frete.</h2>
+              <a href="/saiba-mais/#diferenciais" class="v2-mais">Ver cada diferencial em detalhe →</a>
             </div>
 
-            <ul class="mt-14 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
-              <li class="vidro cartao rounded-lg p-7">
-                <svg class="text-ink-700" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="4" y="10" width="16" height="10" rx="3" />
-                  <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-                </svg>
-                <h3 class="mt-5 text-titulo text-ink">Cotação sigilosa</h3>
-                <p class="mt-2.5 text-corpo text-ink-700">
-                  As transportadoras não veem umas às outras; o solicitante vê todas. Corta ancoragem de preço e
-                  combinação entre concorrentes.
-                </p>
+            <ul class="v2-bento">
+              <li class="v2-tile v2-tile-grande v2-tile-escuro">
+                <div class="v2-cadeados" aria-hidden="true">
+                  <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="3" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg>R$ ••••</span><span class="v2-aberto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>R$ 4.920</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="3" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg>R$ ••••</span>
+                </div>
+                <h3>Cotação sigilosa</h3>
+                <p>Nenhuma concorrente vê o preço da outra.</p>
               </li>
 
-              <li class="vidro cartao rounded-lg p-7">
-                <svg class="text-ink-700" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 3.5 21 8.5 12 13.5 3 8.5z" />
-                  <path d="M3 13.5 12 18.5 21 13.5" />
-                </svg>
-                <h3 class="mt-5 text-titulo text-ink">Curadoria em camadas</h3>
-                <p class="mt-2.5 text-corpo text-ink-700">
-                  Só transportadora homologada participa. A camada de curadoria aparece como selo na proposta.
-                </p>
+              <li class="v2-tile">
+                <span class="v2-ico" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 8.5 12 13.5 3 8.5z" /><path d="M3 13.5 12 18.5 21 13.5" /></svg>
+                </span>
+                <h3>Só homologadas</h3>
+                <p>Curadoria em camadas, com selo.</p>
               </li>
 
-              <li class="vidro cartao rounded-lg p-7">
-                <svg class="text-ink-700" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3.5" y="4" width="17" height="16" rx="3" />
-                  <path d="M7.5 9h9M7.5 13h9M7.5 17h5" />
-                </svg>
-                <h3 class="mt-5 text-titulo text-ink">Histórico estruturado</h3>
-                <p class="mt-2.5 text-corpo text-ink-700">
-                  Cotações, fornecedores e avaliações ficam registrados na plataforma — não na memória do
-                  comprador nem no arquivo de e-mail.
-                </p>
+              <li class="v2-tile">
+                <div class="v2-estrelas" aria-hidden="true">★★★★★</div>
+                <h3>Reputação visível</h3>
+                <p>Nota e fretes concluídos na proposta.</p>
               </li>
 
-              <li class="vidro cartao rounded-lg p-7">
-                <svg class="text-ink-700" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="m12 3.8 2.6 5.4 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.2 5.9-.8z" />
-                </svg>
-                <h3 class="mt-5 text-titulo text-ink">Reputação acumulada</h3>
-                <p class="mt-2.5 text-corpo text-ink-700">
-                  Cada transportadora acumula avaliação e volume de fretes concluídos, visíveis na hora de
-                  comparar.
-                </p>
+              <li class="v2-tile">
+                <div class="v2-fio" aria-hidden="true">
+                  <i class="ok"></i><b></b><i class="ok"></i><b></b><i class="ok"></i><b class="pend"></b><i></i>
+                </div>
+                <h3>Frete rastreado</h3>
+                <p>Coleta, trânsito e entrega, com foto do canhoto.</p>
               </li>
 
-              <li class="vidro cartao rounded-lg p-7">
-                <svg class="text-ink-700" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M3 12h18" />
-                  <circle cx="7" cy="12" r="2.2" />
-                  <circle cx="12" cy="12" r="2.2" />
-                  <circle cx="17" cy="12" r="2.2" />
-                </svg>
-                <h3 class="mt-5 text-titulo text-ink">Fio operacional</h3>
-                <p class="mt-2.5 text-corpo text-ink-700">
-                  Chegada, coleta, trânsito, entrega e ocorrência carimbados no frete. O motorista registra pelo
-                  celular, com foto do canhoto e da carga, e quem contrata vê a posição do caminhão da chegada na
-                  coleta até a entrega.
-                </p>
+              <li class="v2-tile">
+                <span class="v2-ico" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="3" /><path d="M7.5 9h9M7.5 13h9M7.5 17h5" /></svg>
+                </span>
+                <h3>Histórico salvo</h3>
+                <p>Cotações e fornecedores, sempre à mão.</p>
               </li>
 
-              <li class="vidro cartao rounded-lg p-7">
-                <svg class="text-ink-700" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg>
-                <h3 class="mt-5 text-titulo text-ink">Desenho regional</h3>
-                <p class="mt-2.5 text-corpo text-ink-700">
-                  Nós logísticos, categorias de carga e exigências pensados para a realidade de Manaus.
-                </p>
+              <li class="v2-tile v2-tile-neon">
+                <span class="v2-ico" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" /><circle cx="12" cy="10" r="2.5" /></svg>
+                </span>
+                <h3>Feito para Manaus</h3>
+                <p>· Rotas, cargas e exigências da região.</p>
               </li>
             </ul>
           </div>
         </section>
 
-        <!-- ── Para quem ────────────────────────────────────────── -->
-        <section id="para-quem" class="secao" aria-labelledby="t-para-quem" tabindex="-1">
+        <!-- ── Planos (substitui "Para quem") ───────────────────────
+             Valores e condições comerciais ainda não definidos: os cards
+             mostram "Condições no piloto" em vez de preço inventado. -->
+        <section id="planos" class="secao v2-secao" aria-labelledby="t-planos" tabindex="-1">
           <div class="container-embarq">
-            <div class="max-w-[46ch]">
-              <p class="rotulo">Para quem</p>
-              <h2 id="t-para-quem" class="mt-6 text-secao text-ink">Dois lados do mesmo embarque.</h2>
+            <div class="v2-cab v2-cab-centro">
+              <p class="rotulo">Planos</p>
+              <h2 id="t-planos" class="mt-5 text-secao text-ink">Escolha como entrar.</h2>
             </div>
 
-            <div class="mt-14 grid gap-4 lg:grid-cols-2">
-              <article class="vidro rounded-xl border border-line p-8 shadow-raised sm:p-11">
-                <p class="rotulo">Para a empresa contratante</p>
-                <h3 class="mt-5 text-[26px] font-semibold leading-tight tracking-[-0.03em] text-ink">
-                  Uma cotação que você não precisa perseguir.
-                </h3>
-                <ul class="mt-8 flex list-none flex-col gap-4 p-0">
-                  <li class="flex gap-3.5 border-t border-line pt-4 text-corpo text-ink-700">
-                    <svg class="mt-1 flex-none text-neon-ink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Deixa de perseguir cotação por e-mail e WhatsApp.
-                  </li>
-                  <li class="flex gap-3.5 border-t border-line pt-4 text-corpo text-ink-700">
-                    <svg class="mt-1 flex-none text-neon-ink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Compara todas as propostas lado a lado, no mesmo formato.
-                  </li>
-                  <li class="flex gap-3.5 border-t border-line pt-4 text-corpo text-ink-700">
-                    <svg class="mt-1 flex-none text-neon-ink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Acompanha o frete com a posição do caminhão e as fotos do canhoto e da carga.
-                  </li>
-                  <li class="flex gap-3.5 border-t border-line pt-4 text-corpo text-ink-700">
-                    <svg class="mt-1 flex-none text-neon-ink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Histórico auditável de cotações, fornecedores e avaliações.
-                  </li>
+            <div class="v2-planos">
+              <article class="v2-plano">
+                <p class="v2-plano-para">Para quem contrata frete</p>
+                <h3>Empresa</h3>
+                <p class="v2-preco">Condições no piloto</p>
+                <ul>
+                  <li>Todas as propostas lado a lado</li>
+                  <li>Cotação sigilosa entre transportadoras</li>
+                  <li>Posição do caminhão e foto do canhoto</li>
+                  <li>Histórico de cotações e avaliações</li>
                 </ul>
+                <a href="/pesquisa/" class="btn btn-secundario">Quero cotar fretes</a>
               </article>
 
-              <!-- O bloco escuro é o único da página onde o neon vira TEXTO:
-                   sobre `--accent-structural` ele tem contraste de sobra, o
-                   que não acontece sobre o off-white. -->
-              <article class="rounded-xl bg-accent p-8 text-surface shadow-float sm:p-11">
-                <p class="rotulo rotulo-claro">Para a transportadora</p>
-                <h3 class="mt-5 text-[26px] font-semibold leading-tight tracking-[-0.03em] text-surface">
-                  Sua operação organizada, e as empresas chegando até você.
-                </h3>
-                <ul class="mt-8 flex list-none flex-col gap-4 p-0">
-                  <li class="flex gap-3.5 border-t border-white/12 pt-4 text-corpo text-[#d5d8e0]">
-                    <svg class="mt-1 flex-none text-neon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Oportunidades de frete de empresas, sem precisar de equipe comercial.
-                  </li>
-                  <li class="flex gap-3.5 border-t border-white/12 pt-4 text-corpo text-[#d5d8e0]">
-                    <svg class="mt-1 flex-none text-neon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Cotação sigilosa: nenhuma concorrente vê o seu preço.
-                  </li>
-                  <li class="flex gap-3.5 border-t border-white/12 pt-4 text-corpo text-[#d5d8e0]">
-                    <svg class="mt-1 flex-none text-neon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Veículos, motoristas, documentos, manutenção e abastecimento num lugar só.
-                  </li>
-                  <li class="flex gap-3.5 border-t border-white/12 pt-4 text-corpo text-[#d5d8e0]">
-                    <svg class="mt-1 flex-none text-neon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    O motorista registra chegada, entrega e foto do canhoto pelo celular, sem instalar nada.
-                  </li>
-                  <li class="flex gap-3.5 border-t border-white/12 pt-4 text-corpo text-[#d5d8e0]">
-                    <svg class="mt-1 flex-none text-neon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                    Repasse e documentação organizados.
-                  </li>
+              <article class="v2-plano v2-plano-destaque">
+                <span class="v2-faixa">Vagas abertas</span>
+                <p class="v2-plano-para">Empresas e transportadoras</p>
+                <h3>Piloto Manaus</h3>
+                <p class="v2-preco">Entrada antecipada</p>
+                <ul>
+                  <li>Acesso antes do lançamento</li>
+                  <li>Acompanhamento do time Embarq</li>
+                  <li>Sua opinião molda o produto</li>
+                  <li>Começando por Manaus</li>
                 </ul>
+                <a href="/pesquisa/" class="btn btn-primario">Entrar no piloto</a>
               </article>
+
+              <article class="v2-plano">
+                <p class="v2-plano-para">Para quem transporta</p>
+                <h3>Transportadora</h3>
+                <p class="v2-preco">Condições no piloto</p>
+                <ul>
+                  <li>Fretes de empresas, sem equipe comercial</li>
+                  <li>Seu preço nunca aparece para concorrentes</li>
+                  <li>Frota, motoristas e documentos num lugar</li>
+                  <li>Motorista registra tudo pelo celular</li>
+                </ul>
+                <a href="/pesquisa/" class="btn btn-secundario">Quero receber fretes</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Perguntas frequentes ─────────────────────────────── -->
+        <section id="perguntas" class="secao v2-secao pt-0" aria-labelledby="t-perguntas" tabindex="-1">
+          <div class="container-embarq v2-faq-wrap">
+            <div class="v2-cab">
+              <p class="rotulo">Dúvidas</p>
+              <h2 id="t-perguntas" class="mt-5 text-secao text-ink">Perguntas rápidas.</h2>
+              <a href="/saiba-mais/#perguntas" class="v2-mais">Ver todas as perguntas →</a>
+            </div>
+            <div class="v2-faq">
+              <details>
+                <summary>Uma transportadora vê o preço da outra?</summary>
+                <p>Não. Cada transportadora vê só a própria proposta. Quem contrata vê todas.</p>
+              </details>
+              <details>
+                <summary>Quem pode enviar proposta?</summary>
+                <p>Só transportadoras homologadas pela curadoria da Embarq, compatíveis com a carga e a rota.</p>
+              </details>
+              <details>
+                <summary>O que acontece quando eu aceito uma proposta?</summary>
+                <p>O aceite gera a Ordem de Serviço e revela a transportadora escolhida. Depois, você acompanha coleta e entrega.</p>
+              </details>
+              <details>
+                <summary>Onde a Embarq funciona?</summary>
+                <p>O piloto começa por Manaus, com rotas, cargas e exigências pensadas para a região.</p>
+              </details>
             </div>
           </div>
         </section>
@@ -489,28 +534,23 @@
         <!-- ── CTA final ────────────────────────────────────────── -->
         <section class="secao pt-0" aria-labelledby="t-cta" tabindex="-1">
           <div class="container-embarq">
-            <div class="vidro relative overflow-hidden rounded-xl border border-neon-line px-7 py-14 text-center shadow-float sm:px-14 sm:py-20">
-              <div
-                class="pointer-events-none absolute inset-x-0 -top-24 h-56 opacity-70"
-                style="background: radial-gradient(50% 100% at 50% 100%, var(--neon-glow) 0%, transparent 70%)"
-                aria-hidden="true"
-              ></div>
-
-              <div class="relative">
-                <h2 id="t-cta" class="mx-auto max-w-[18ch] text-secao text-ink">
-                  Coloque seu próximo frete em cotação.
-                </h2>
-                <p class="mx-auto mt-5 max-w-[56ch] text-lead text-ink-700">
-                  Empresas e transportadoras entram pela mesma plataforma. O piloto começa por Manaus.
-                </p>
-                <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-                  <p class="selo">Piloto em Manaus</p>
-                  <a href="/pesquisa/" class="btn btn-primario">Responder à pesquisa</a>
+            <!-- Foto: Pexels (licença gratuita, sem atribuição obrigatória). -->
+            <div class="v2-cta">
+              <figure class="v2-cta-foto">
+                <img
+                  src="https://images.pexels.com/photos/6720550/pexels-photo-6720550.jpeg?auto=compress&cs=tinysrgb&w=1100"
+                  alt="Dois homens apertando as mãos em frente a um caminhão azul"
+                  loading="lazy" width="1100" height="734"
+                />
+                <span class="v2-chip v2-chip-quem">✓ Ordem de Serviço gerada</span>
+              </figure>
+              <div class="v2-cta-texto">
+                <h2 id="t-cta" class="text-secao">Negócio fechado. Do jeito certo.</h2>
+                <p>Você escolhe a proposta, a Embarq registra o acordo.</p>
+                <div class="v2-cta-acoes">
+                  <a href="/pesquisa/" class="btn btn-primario">Entrar no piloto</a>
+                  <span>5 perguntas · 3 minutos</span>
                 </div>
-                <p class="mx-auto mt-4 max-w-[52ch] text-[13.5px] text-ink-500">
-                  Conte como o frete é cotado na sua empresa e diga se quer entrar no piloto. Cinco perguntas, três
-                  minutos.
-                </p>
               </div>
             </div>
           </div>
@@ -546,7 +586,8 @@
                 <li><a href="#o-que-e" class="text-[13.5px] text-ink-700 no-underline hover:text-ink">O que é</a></li>
                 <li><a href="#como-funciona" class="text-[13.5px] text-ink-700 no-underline hover:text-ink">Como funciona</a></li>
                 <li><a href="#diferenciais" class="text-[13.5px] text-ink-700 no-underline hover:text-ink">Diferenciais</a></li>
-                <li><a href="#para-quem" class="text-[13.5px] text-ink-700 no-underline hover:text-ink">Para quem</a></li>
+                <li><a href="#planos" class="text-[13.5px] text-ink-700 no-underline hover:text-ink">Planos</a></li>
+                <li><a href="/saiba-mais/" class="text-[13.5px] text-ink-700 no-underline hover:text-ink">Saiba mais</a></li>
                 <li><a href="/pesquisa/" class="text-[13.5px] text-ink-700 no-underline hover:text-ink">Pesquisa</a></li>
               </ul>
             </nav>
